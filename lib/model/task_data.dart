@@ -1,6 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:future_task/model/task.dart';
 
 class TaskData extends ChangeNotifier {
@@ -16,7 +17,10 @@ class TaskData extends ChangeNotifier {
 
   void addTask(String newTaskTitle) {
     final task = Task(name: newTaskTitle, isDone: false);
-    _tasks.add(task);
+    if (newTaskTitle == '') {
+    } else {
+      _tasks.add(task);
+    }
     notifyListeners();
   }
 

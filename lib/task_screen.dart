@@ -70,6 +70,11 @@ class TaskScreen extends StatelessWidget {
             context: context,
             builder: (context) => AddNewTask(),
           );
+          const snackBar = SnackBar(
+            content: Text('Task can not be empty!'),
+          );
+
+          ScaffoldMessenger.of(context).showSnackBar(snackBar);
         },
         child: Icon(Icons.add),
       ),
