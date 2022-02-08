@@ -25,9 +25,10 @@ class AddNewTask extends StatelessWidget {
                 "Add Task",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.orange,
-                    fontSize: 35,
-                    fontWeight: FontWeight.w500),
+                  color: Colors.orange,
+                  fontSize: 35,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
               TextField(
                 autofocus: true,
@@ -45,11 +46,13 @@ class AddNewTask extends StatelessWidget {
                   Provider.of<TaskData>(context, listen: false)
                       .addTask(newTaskTitle);
                   Navigator.pop(context);
-                  const snackBar = SnackBar(
-                    content: Text('Task can not be empty!'),
-                  );
+                  if (newTaskTitle.isEmpty) {
+                    const snackBar = SnackBar(
+                      content: Text('Task can not be empty!'),
+                    );
 
-                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                  }
                 },
                 child: Text(
                   "Add",
