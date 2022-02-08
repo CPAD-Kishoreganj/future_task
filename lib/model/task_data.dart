@@ -7,8 +7,11 @@ import 'package:future_task/model/task.dart';
 class TaskData extends ChangeNotifier {
   List<Task> _tasks = [];
 
-  UnmodifiableListView<Task> get tasks {
-    return UnmodifiableListView(_tasks);
+  // UnmodifiableListView<Task> get tasks {
+  //   return UnmodifiableListView(_tasks);
+  // }
+  List<Task> get tasks {
+    return [..._tasks];
   }
 
   int get taskCount {
