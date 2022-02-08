@@ -7,6 +7,7 @@ import 'model/task_data.dart';
 class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final task = Provider.of<TaskData>(context, listen: false);
     return Scaffold(
       backgroundColor: Colors.orangeAccent,
       body: SafeArea(
@@ -37,11 +38,13 @@ class TaskScreen extends StatelessWidget {
                       fontSize: 35,
                     ),
                   ),
-                  Text(
-                    "${Provider.of<TaskData>(context).taskCount} tasks",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
+                  Consumer<TaskData>(
+                    builder: (context, value, child) => Text(
+                      "${task.taskCount} tasks",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ],
