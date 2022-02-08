@@ -45,6 +45,11 @@ class AddNewTask extends StatelessWidget {
                   Provider.of<TaskData>(context, listen: false)
                       .addTask(newTaskTitle);
                   Navigator.pop(context);
+                  const snackBar = SnackBar(
+                    content: Text('Task can not be empty!'),
+                  );
+
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 },
                 child: Text(
                   "Add",
