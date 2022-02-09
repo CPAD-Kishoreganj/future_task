@@ -17,9 +17,11 @@ class TasksTile extends StatelessWidget {
     return ListTile(
       onLongPress: longPressCallback as Function(),
       leading: Icon(
-        Icons.work,
-        size: 20,
-        color: isChecked ? Colors.red : Colors.green,
+        isChecked ? Icons.done : Icons.cancel_outlined,
+        size: 30,
+        color: isChecked
+            ? Color.fromARGB(255, 255, 255, 255)
+            : Color.fromARGB(255, 255, 0, 0),
       ),
       title: Text(
         taskTitle.toUpperCase(),
@@ -32,7 +34,7 @@ class TasksTile extends StatelessWidget {
         ),
       ),
       trailing: Checkbox(
-        activeColor: Colors.purple,
+        activeColor: Colors.black,
         value: isChecked,
         onChanged: checkboxCallback as Function(void),
       ),

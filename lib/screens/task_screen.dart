@@ -3,13 +3,20 @@ import 'package:provider/provider.dart';
 import '../widgets/add_new_task.dart';
 import '../widgets/tasks_list.dart';
 import '../providers/task_data.dart';
+import '../widgets/theme_switch.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final task = Provider.of<TaskData>(context, listen: false);
     return Scaffold(
-      backgroundColor: Colors.orangeAccent,
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        title: ChangeThemeButtonWidget(),
+      ),
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,19 +28,19 @@ class TaskScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
-                    backgroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
                     radius: 30,
                     child: Icon(
                       Icons.list,
                       size: 40,
-                      color: Colors.orangeAccent,
+                      color: Theme.of(context).iconTheme.color,
                     ),
                   ),
                   SizedBox(height: 12),
                   Text(
                     "Future Task",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Theme.of(context).textTheme.bodyMedium!.color,
                       fontWeight: FontWeight.w600,
                       fontSize: 35,
                     ),
@@ -42,7 +49,7 @@ class TaskScreen extends StatelessWidget {
                     builder: (context, value, child) => Text(
                       "${task.taskCount} tasks",
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Theme.of(context).textTheme.bodyMedium!.color,
                         fontSize: 16,
                       ),
                     ),
@@ -53,7 +60,7 @@ class TaskScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     topRight: Radius.circular(25),
@@ -67,14 +74,17 @@ class TaskScreen extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.orangeAccent,
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () {
           showModalBottomSheet(
             context: context,
             builder: (context) => AddNewTask(),
           );
         },
-        child: Icon(Icons.add),
+        child: Icon(
+          Icons.add,
+          color: Theme.of(context).iconTheme.color,
+        ),
       ),
     );
   }

@@ -14,7 +14,7 @@ class TasksList extends StatelessWidget {
               child: Text(
               "No Task to do for Today!!",
               style: TextStyle(
-                color: Colors.red,
+                color: Theme.of(context).textTheme.bodyMedium!.color,
                 fontSize: 22,
                 fontWeight: FontWeight.w400,
               ),

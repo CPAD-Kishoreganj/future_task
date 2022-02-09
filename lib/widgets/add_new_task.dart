@@ -7,16 +7,10 @@ class AddNewTask extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTaskTitle = '';
     return Container(
-      decoration: BoxDecoration(
-        color: Colors.grey[600],
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
-        ),
-      ),
+      color: Theme.of(context).focusColor,
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.onPrimary,
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(30),
             topRight: Radius.circular(30),
@@ -31,7 +25,7 @@ class AddNewTask extends StatelessWidget {
                 "Add Task",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.orange,
+                  color: Theme.of(context).textTheme.bodyMedium?.color,
                   fontSize: 35,
                   fontWeight: FontWeight.w500,
                 ),
@@ -46,7 +40,7 @@ class AddNewTask extends StatelessWidget {
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.orange,
+                  primary: Theme.of(context).primaryColor,
                 ),
                 onPressed: () {
                   final newtask = Provider.of<TaskData>(context, listen: false);
@@ -63,7 +57,7 @@ class AddNewTask extends StatelessWidget {
                 child: Text(
                   "Add",
                   style: TextStyle(
-                    color: Colors.white,
+                    color: Theme.of(context).textTheme.bodyMedium?.color,
                     fontSize: 22.0,
                     fontWeight: FontWeight.w500,
                   ),

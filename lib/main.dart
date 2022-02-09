@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:future_task/providers/theme.dart';
 import '../providers/task_data.dart';
 import 'package:provider/provider.dart';
 import 'screens/task_screen.dart';
@@ -10,16 +11,27 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => TaskData(),
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Futute Task',
-        theme: ThemeData(
-          primarySwatch: Colors.orange,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => TaskData(),
         ),
-        home: TaskScreen(),
-      ),
+        ChangeNotifierProvider(
+          create: (context) => ThemeProvider(),
+          builder: (context, ch) {
+            final themeProvider = Provider.of<ThemeProvider>(context);
+
+            return MaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Futute Task',
+              themeMode: themeProvider.themeMode,
+              theme: MyThemes.lightTheme,
+              darkTheme: MyThemes.darkTheme,
+              home: TaskScreen(),
+            );
+          },
+        ),
+      ],
     );
   }
 }
