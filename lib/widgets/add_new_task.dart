@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:future_task/model/task_data.dart';
+import '../providers/task_data.dart';
 import 'package:provider/provider.dart';
 
 class AddNewTask extends StatelessWidget {
@@ -7,13 +7,19 @@ class AddNewTask extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTaskTitle = '';
     return Container(
-      color: Colors.grey[600],
+      decoration: BoxDecoration(
+        color: Colors.grey[600],
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30),
+          topRight: Radius.circular(30),
+        ),
+      ),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
+            topLeft: Radius.circular(30),
+            topRight: Radius.circular(30),
           ),
         ),
         child: Padding(
@@ -43,8 +49,8 @@ class AddNewTask extends StatelessWidget {
                   primary: Colors.orange,
                 ),
                 onPressed: () {
-                  Provider.of<TaskData>(context, listen: false)
-                      .addTask(newTaskTitle);
+                  final newtask = Provider.of<TaskData>(context, listen: false);
+                  newtask.addTask(newTaskTitle);
                   Navigator.pop(context);
                   if (newTaskTitle.isEmpty) {
                     const snackBar = SnackBar(

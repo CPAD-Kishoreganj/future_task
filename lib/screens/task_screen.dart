@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../widgets/add_new_task.dart';
 import '../widgets/tasks_list.dart';
-import '../model/task_data.dart';
+import '../providers/task_data.dart';
 
 class TaskScreen extends StatelessWidget {
   @override
