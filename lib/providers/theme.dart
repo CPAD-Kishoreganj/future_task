@@ -28,21 +28,24 @@ class MyThemes {
       onPrimary: Colors.grey,
     ),
     textTheme: TextTheme(
-      bodyMedium: TextStyle(color: Colors.white),
+      bodyMedium: TextStyle(
+        color: Colors.white,
+        fontSize: 24,
+      ),
     ),
     iconTheme: IconThemeData(color: Colors.white),
   );
 
   static final lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colors.white,
+    scaffoldBackgroundColor: Color.fromARGB(255, 197, 4, 4),
     primaryColor: Colors.white,
     colorScheme: ColorScheme.light(
-      secondary: Color.fromARGB(255, 211, 198, 178),
-      onPrimary: Color.fromARGB(255, 211, 198, 178),
+      secondary: Color.fromARGB(255, 238, 176, 84),
+      onPrimary: Color.fromARGB(255, 26, 199, 69),
     ),
     textTheme: TextTheme(
       bodyMedium: TextStyle(color: Colors.black),
     ),
-    iconTheme: IconThemeData(color: Colors.black, opacity: 0.8),
+    iconTheme: IconThemeData(color: Colors.black),
   );
 }

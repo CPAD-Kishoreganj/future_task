@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:future_task/providers/theme.dart';
 import '../providers/task_data.dart';
 import 'package:provider/provider.dart';
 
 class AddNewTask extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final newTheme = Provider.of<ThemeProvider>(context, listen: false);
     String newTaskTitle = '';
     return Container(
-      color: Theme.of(context).focusColor,
+      color:
+          newTheme.isDarkMode ? Colors.black : Color.fromARGB(26, 244, 67, 54),
       child: Container(
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.onPrimary,
@@ -31,6 +34,8 @@ class AddNewTask extends StatelessWidget {
                 ),
               ),
               TextField(
+                decoration: InputDecoration(),
+                cursorColor: Theme.of(context).textTheme.bodyMedium?.color,
                 autofocus: true,
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 25),

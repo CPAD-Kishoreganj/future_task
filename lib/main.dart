@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:future_task/providers/theme.dart';
+import './providers/theme.dart';
 import '../providers/task_data.dart';
 import 'package:provider/provider.dart';
 import 'screens/task_screen.dart';
